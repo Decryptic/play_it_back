@@ -55,14 +55,6 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
-  void _stopRecorder() async {
-    await _recorder!.stopRecorder().then((value) {
-      setState(() {
-        _recording = false;
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
