@@ -44,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   late final Record _audioRecorder;
   bool _recording = false;
+  bool _null_record = true; // whether or not a sample exists
   int _duration = 0;
   Timer? _timer;
 
@@ -62,19 +63,29 @@ class _MyHomePageState extends State<MyHomePage> {
         debugPrint('${encoder.name} supported: $isSupported');
 
         await _audioRecorder.start();
-        _duration = 0;
+        setState(() {
+          _duration = 0;
+        });
         _startTimer();
+      } else {
+        setState(() {
+          _recording = false;
+          _null_record = true;
+        });
       }
     } catch (e) {
       if (kDebugMode) {
         print(e);
       }
+      setState(() {
+          _recording = false;
+          _null_record = true;
+        });
     }
   }
 
   Future<void> _stop() async {
     _timer?.cancel();
-    _duration = 0;
     final path = await _audioRecorder.stop();
     if (path == null) {
       debugPrint('path is null on stop');
@@ -92,6 +103,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void dispose() {
     _timer?.cancel();
     _audioRecorder.dispose();
+    _recording = false;
+    _null_record = true;
     super.dispose();
   }
 
@@ -124,13 +137,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   iconSize: _icon_size,
                   tooltip: 'Play reverse',
-                  onPressed: null, //todo: implement
+                  onPressed: _recording || _null_record ? null : () {
+
+                  },
                 ),
                 IconButton(
                   icon: const Icon(Icons.play_circle_outline),
                   iconSize: _icon_size,
                   tooltip: 'Play forward',
-                  onPressed: null, //todo: implement
+                  onPressed: _recording  || _null_record ? null : () {
+
+                  },
                 ),
               ],
             ),
@@ -140,11 +157,14 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           if (!_recording) {
+            _start();
             setState(() {
               _recording = true;
             });
           } else {
+            _stop();
             setState(() {
+              _null_record = false;
               _recording = false;
             });
           }
