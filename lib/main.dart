@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:math' as math;
+import 'package:audioplayers/audioplayers.dart' as ap;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:record/record.dart';
@@ -42,17 +43,31 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final _icon_size = 42.0;
 
-  late final Record _audioRecorder;
+  final Record _audioRecorder = Record();
+  final _audioPlayer = ap.AudioPlayer();
   bool _recording = false;
-  bool _null_record = true; // whether or not a sample exists
+  bool _playing = false;
+  String? _file_path = null;
   int _duration = 0;
   Timer? _timer;
 
   @override
   void initState() {
-    _audioRecorder = Record();
+    _recording = false;
+    _playing = false;
+    _file_path = null;
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    _audioRecorder.dispose();
+    _recording = false;
+    _playing = false;
+    _file_path = null;
+    super.dispose();
   }
 
   Future<void> _start() async {
@@ -65,22 +80,21 @@ class _MyHomePageState extends State<MyHomePage> {
         await _audioRecorder.start();
         setState(() {
           _duration = 0;
+          _recording = true;
         });
         _startTimer();
       } else {
         setState(() {
           _recording = false;
-          _null_record = true;
+          _file_path = null;
         });
       }
     } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
+      debugPrint(e.toString());
       setState(() {
           _recording = false;
-          _null_record = true;
-        });
+          _file_path = null;
+      });
     }
   }
 
@@ -89,7 +103,13 @@ class _MyHomePageState extends State<MyHomePage> {
     final path = await _audioRecorder.stop();
     if (path == null) {
       debugPrint('path is null on stop');
+    } else {
+      debugPrint('recorded audio to: ' + path);
     }
+    setState(() {
+      _recording = false;
+      _file_path = path;
+    });
   }
 
   void _startTimer() {
@@ -99,14 +119,17 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  @override
-  void dispose() {
-    _timer?.cancel();
-    _audioRecorder.dispose();
-    _recording = false;
-    _null_record = true;
-    super.dispose();
+  Future<void> _play() {
+    if (_file_path != null) {
+      return _audioPlayer.play(
+        kIsWeb ? ap.UrlSource(_file_path!) : ap.DeviceFileSource(_file_path!)
+      );
+    } else {
+      debugPrint('play attempted on null record');
+    }
   }
+
+  Future<void> _unplay() => _audioPlayer.stop();
 
   @override
   Widget build(BuildContext context) {
@@ -137,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   iconSize: _icon_size,
                   tooltip: 'Play reverse',
-                  onPressed: _recording || _null_record ? null : () {
+                  onPressed: _recording || (_file_path == null) ? null : () {
 
                   },
                 ),
@@ -145,8 +168,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   icon: const Icon(Icons.play_circle_outline),
                   iconSize: _icon_size,
                   tooltip: 'Play forward',
-                  onPressed: _recording  || _null_record ? null : () {
-
+                  onPressed: _recording  || (_file_path == null) ? null : () {
+                    _play();
                   },
                 ),
               ],
@@ -155,20 +178,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          if (!_recording) {
-            _start();
-            setState(() {
-              _recording = true;
-            });
-          } else {
-            _stop();
-            setState(() {
-              _null_record = false;
-              _recording = false;
-            });
-          }
-        },
+        onPressed: _recording ? _stop : _start,
         tooltip: _recording ? 'Stop' : 'Record',
         child: _recording 
           ? const Icon(Icons.stop) 
