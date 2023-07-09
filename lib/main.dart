@@ -46,16 +46,29 @@ class _MyHomePageState extends State<MyHomePage> {
   final Record _audioRecorder = Record();
   final _audioPlayer = ap.AudioPlayer();
   bool _recording = false;
-  bool _playing = false;
   String? _file_path = null;
   int _duration = 0;
   Timer? _timer;
+  bool _playing = false;
+  late final StreamSubscription _stream;
 
   @override
   void initState() {
     _recording = false;
-    _playing = false;
     _file_path = null;
+    _playing = false;
+    _stream = _audioPlayer.onPlayerStateChanged.listen((it) {
+      switch (it) {
+        case ap.PlayerState.completed:
+        case ap.PlayerState.stopped:
+          setState(() {
+            _playing = false;
+          });
+          break;
+        default:
+          break;
+      }
+    });
 
     super.initState();
   }
@@ -67,7 +80,19 @@ class _MyHomePageState extends State<MyHomePage> {
     _recording = false;
     _playing = false;
     _file_path = null;
+    _stream.cancel();
     super.dispose();
+  }
+
+  void _play() {
+    if (_file_path != null) {
+      setState(() => _playing = true);
+      _audioPlayer.play(
+        kIsWeb ? ap.UrlSource(_file_path!) : ap.DeviceFileSource(_file_path!)
+      );
+    } else {
+      debugPrint('play attempted on null record');
+    }
   }
 
   Future<void> _start() async {
@@ -99,17 +124,24 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> _stop() async {
-    _timer?.cancel();
-    final path = await _audioRecorder.stop();
-    if (path == null) {
-      debugPrint('path is null on stop');
+    if (_playing) {
+      _audioPlayer.stop();
+      setState(() {
+        _playing = false;
+      });
     } else {
-      debugPrint('recorded audio to: ' + path);
+      _timer?.cancel();
+      final path = await _audioRecorder.stop();
+      if (path == null) {
+        debugPrint('path is null on stop');
+      } else {
+        debugPrint('recorded audio to: ' + path);
+      }
+      setState(() {
+        _recording = false;
+        _file_path = path;
+      });
     }
-    setState(() {
-      _recording = false;
-      _file_path = path;
-    });
   }
 
   void _startTimer() {
@@ -118,18 +150,6 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() => _duration++);
     });
   }
-
-  Future<void> _play() {
-    if (_file_path != null) {
-      return _audioPlayer.play(
-        kIsWeb ? ap.UrlSource(_file_path!) : ap.DeviceFileSource(_file_path!)
-      );
-    } else {
-      debugPrint('play attempted on null record');
-    }
-  }
-
-  Future<void> _unplay() => _audioPlayer.stop();
 
   @override
   Widget build(BuildContext context) {
@@ -160,17 +180,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   iconSize: _icon_size,
                   tooltip: 'Play reverse',
-                  onPressed: _recording || (_file_path == null) ? null : () {
-
-                  },
+                  onPressed: _recording || _playing || (_file_path == null)
+                    ? null 
+                    : () => null,
                 ),
                 IconButton(
                   icon: const Icon(Icons.play_circle_outline),
                   iconSize: _icon_size,
                   tooltip: 'Play forward',
-                  onPressed: _recording  || (_file_path == null) ? null : () {
-                    _play();
-                  },
+                  onPressed: _recording || _playing || (_file_path == null)
+                    ? null
+                    : _play,
                 ),
               ],
             ),
@@ -178,9 +198,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _recording ? _stop : _start,
-        tooltip: _recording ? 'Stop' : 'Record',
-        child: _recording 
+        onPressed: _recording || _playing ? _stop : _start,
+        tooltip: _recording || _playing ? 'Stop' : 'Record',
+        child: _recording || _playing
           ? const Icon(Icons.stop) 
           : const Icon(Icons.fiber_manual_record, color: Colors.red),
       ),
