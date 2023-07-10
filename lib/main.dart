@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math' as math;
 import 'package:audioplayers/audioplayers.dart' as ap;
+import 'package:ffmpeg_kit_flutter/ffmpeg_kit.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:record/record.dart';
@@ -47,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final _audioPlayer = ap.AudioPlayer();
   bool _recording = false;
   String? _file_path = null;
+  String? _file_path_reverse = null;
   int _duration = 0;
   Timer? _timer;
   bool _playing = false;
@@ -56,6 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     _recording = false;
     _file_path = null;
+    _file_path_reverse = null;
     _playing = false;
     _stream = _audioPlayer.onPlayerStateChanged.listen((it) {
       switch (it) {
@@ -80,16 +83,24 @@ class _MyHomePageState extends State<MyHomePage> {
     _recording = false;
     _playing = false;
     _file_path = null;
+    _file_path_reverse = null;
     _stream.cancel();
     super.dispose();
   }
 
-  void _play() {
-    if (_file_path != null) {
+  void _play({bool reversed = false}) {
+    if (_file_path != null && !reversed) {
       setState(() => _playing = true);
       _audioPlayer.play(
         kIsWeb ? ap.UrlSource(_file_path!) : ap.DeviceFileSource(_file_path!)
       );
+      _audioPlayer.setPlaybackRate(1.0);
+    } else if (_file_path_reverse != null && reversed) {
+      setState(() => _playing = true);
+      _audioPlayer.play(
+        kIsWeb ? ap.UrlSource(_file_path_reverse!) : ap.DeviceFileSource(_file_path_reverse!)
+      );
+      _audioPlayer.setPlaybackRate(1.0);
     } else {
       debugPrint('play attempted on null record');
     }
@@ -112,6 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
         setState(() {
           _recording = false;
           _file_path = null;
+          _file_path_reverse = null;
         });
       }
     } catch (e) {
@@ -119,6 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() {
           _recording = false;
           _file_path = null;
+          _file_path_reverse = null;
       });
     }
   }
@@ -132,14 +145,23 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       _timer?.cancel();
       final path = await _audioRecorder.stop();
+      String? reverse_path = null;
       if (path == null) {
         debugPrint('path is null on stop');
       } else {
         debugPrint('recorded audio to: ' + path);
+        reverse_path = path + '_reverse';
+        FFmpegKit.execute('-i ' + path + ' -af areverse ' + reverse_path).then((session) async {
+          final output = await session.getOutput();
+          debugPrint(output);
+          final failStackTrace = await session.getFailStackTrace();
+          debugPrint(failStackTrace);
+        });
       }
       setState(() {
         _recording = false;
         _file_path = path;
+        _file_path_reverse = reverse_path;
       });
     }
   }
@@ -182,7 +204,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   tooltip: 'Play reverse',
                   onPressed: _recording || _playing || (_file_path == null)
                     ? null 
-                    : () => null,
+                    : () => _play(reversed: true),
                 ),
                 IconButton(
                   icon: const Icon(Icons.play_circle_outline),

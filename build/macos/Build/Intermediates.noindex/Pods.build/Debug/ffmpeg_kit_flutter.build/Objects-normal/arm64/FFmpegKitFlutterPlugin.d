@@ -1,0 +1,47 @@
+dependencies: \
+  /Users/kitten/.pub-cache/hosted/pub.dev/ffmpeg_kit_flutter-5.1.0/macos/Classes/FFmpegKitFlutterPlugin.m \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Intermediates.noindex/Pods.build/Debug/ffmpeg_kit_flutter.build/module.modulemap \
+  /Users/kitten/Git/play_it_back/macos/Pods/Target\ Support\ Files/ffmpeg_kit_flutter/ffmpeg_kit_flutter-prefix.pch \
+  /Users/kitten/.pub-cache/hosted/pub.dev/ffmpeg_kit_flutter-5.1.0/macos/Classes/FFmpegKitFlutterPlugin.h \
+  /Users/kitten/.flutter/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Modules/module.modulemap \
+  /Users/kitten/.flutter/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterViewController.h \
+  /Users/kitten/.flutter/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterTexture.h \
+  /Users/kitten/.flutter/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterPluginMacOS.h \
+  /Users/kitten/.flutter/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterPlatformViews.h \
+  /Users/kitten/.flutter/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterPluginRegistrarMacOS.h \
+  /Users/kitten/.flutter/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterEngine.h \
+  /Users/kitten/.flutter/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterDartProject.h \
+  /Users/kitten/.flutter/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterCodecs.h \
+  /Users/kitten/.flutter/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterChannels.h \
+  /Users/kitten/.flutter/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterBinaryMessenger.h \
+  /Users/kitten/.flutter/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterMacros.h \
+  /Users/kitten/.flutter/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterAppDelegate.h \
+  /Users/kitten/.flutter/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.framework/Headers/FlutterMacOS.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Modules/module.modulemap \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/ffmpegkit_exception.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/Packages.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/Level.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/MediaInformationJsonParser.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/FFprobeKit.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/MediaInformationSessionCompleteCallback.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/StreamInformation.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/MediaInformation.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/MediaInformationSession.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/FFprobeSessionCompleteCallback.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/FFprobeSession.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/FFmpegKitConfig.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/FFmpegSessionCompleteCallback.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/Statistics.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/StatisticsCallback.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/FFmpegSession.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/FFmpegKit.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/Chapter.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/AtomicLong.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/ArchDetect.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/SessionState.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/ReturnCode.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/LogRedirectionStrategy.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/LogCallback.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/Log.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/Session.h \
+  /Users/kitten/Git/play_it_back/build/macos/Build/Products/Debug/XCFrameworkIntermediates/ffmpeg-kit-macos-https/ffmpegkit.framework/Headers/AbstractSession.h
