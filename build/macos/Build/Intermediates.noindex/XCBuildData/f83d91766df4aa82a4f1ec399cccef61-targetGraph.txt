@@ -1,0 +1,31 @@
+Target dependency graph (9 targets)
+FlutterMacOS in Pods, no dependencies
+audioplayers_darwin in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+ffmpeg-kit-macos-https in Pods, no dependencies
+ffmpeg_kit_flutter in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+ffmpeg-kit-macos-https in Pods (explicit)
+path_provider_foundation in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+record_macos in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+Flutter Assemble in Runner, depends on:
+audioplayers_darwin in Pods (implicit dependency via options '-framework audioplayers_darwin' in build setting 'OTHER_LDFLAGS')
+ffmpeg_kit_flutter in Pods (implicit dependency via options '-framework ffmpeg_kit_flutter' in build setting 'OTHER_LDFLAGS')
+path_provider_foundation in Pods (implicit dependency via options '-framework path_provider_foundation' in build setting 'OTHER_LDFLAGS')
+record_macos in Pods (implicit dependency via options '-framework record_macos' in build setting 'OTHER_LDFLAGS')
+Pods-Runner in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+audioplayers_darwin in Pods (explicit)
+ffmpeg-kit-macos-https in Pods (explicit)
+ffmpeg_kit_flutter in Pods (explicit)
+path_provider_foundation in Pods (explicit)
+record_macos in Pods (explicit)
+Runner in Runner, depends on:
+Flutter Assemble in Runner (explicit)
+Pods-Runner in Pods (implicit dependency via file 'Pods_Runner.framework' in build phase 'Link Binary')
+audioplayers_darwin in Pods (implicit dependency via options '-framework audioplayers_darwin' in build setting 'OTHER_LDFLAGS')
+ffmpeg_kit_flutter in Pods (implicit dependency via options '-framework ffmpeg_kit_flutter' in build setting 'OTHER_LDFLAGS')
+path_provider_foundation in Pods (implicit dependency via options '-framework path_provider_foundation' in build setting 'OTHER_LDFLAGS')
+record_macos in Pods (implicit dependency via options '-framework record_macos' in build setting 'OTHER_LDFLAGS')

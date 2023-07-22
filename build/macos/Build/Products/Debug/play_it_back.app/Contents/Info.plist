@@ -45,11 +45,13 @@
 	<key>DTXcodeBuild</key>
 	<string>14B47b</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.14</string>
+	<string>10.15</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2023 net.gageswenson.play_it_back. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Record audio for playback</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

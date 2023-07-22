@@ -1,7 +1,7 @@
 version: "Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)"
 options: "29ac42afe4903e88178f825e0fdb5421aee6ae3872f886c26feaff2c27e75c05"
-build_start_time: [1688975986, 297760963]
-build_end_time: [1688975992, 569615840]
+build_start_time: [1690049297, 564255952]
+build_end_time: [1690049304, 620836973]
 inputs:
   "/Users/kitten/.pub-cache/hosted/pub.dev/path_provider_foundation-2.2.3/darwin/Classes/PathProviderPlugin.swift": [1686554636, 634746551]
   "/Users/kitten/.pub-cache/hosted/pub.dev/path_provider_foundation-2.2.3/darwin/Classes/messages.g.swift": [1686554636, 634621620]

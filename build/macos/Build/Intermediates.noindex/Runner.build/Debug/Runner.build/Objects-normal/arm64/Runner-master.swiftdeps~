@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)"
+options: "4a9336b0153a9a0cbb413d041b5d4ea0dec677eeabf164cf9c5ce180ffebf763"
+build_start_time: [1690049313, 359562873]
+build_end_time: [1690049313, 384894847]
+inputs:
+  "/Users/kitten/Git/play_it_back/macos/Flutter/GeneratedPluginRegistrant.swift": !private [1690049293, 309206485]
+  "/Users/kitten/Git/play_it_back/macos/Runner/AppDelegate.swift": !private [1687110927, 408888816]
+  "/Users/kitten/Git/play_it_back/macos/Runner/MainFlutterWindow.swift": !private [1687110927, 412645816]

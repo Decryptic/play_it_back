@@ -90,12 +90,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _play({bool reversed = false}) {
     if (_file_path != null && !reversed) {
+      debugPrint('playing forward: ' + _file_path!);
       setState(() => _playing = true);
       _audioPlayer.play(
         kIsWeb ? ap.UrlSource(_file_path!) : ap.DeviceFileSource(_file_path!)
       );
       _audioPlayer.setPlaybackRate(1.0);
     } else if (_file_path_reverse != null && reversed) {
+      debugPrint('playing reverse: ' + _file_path_reverse!);
       setState(() => _playing = true);
       _audioPlayer.play(
         kIsWeb ? ap.UrlSource(_file_path_reverse!) : ap.DeviceFileSource(_file_path_reverse!)
@@ -112,6 +114,9 @@ class _MyHomePageState extends State<MyHomePage> {
         const encoder = AudioEncoder.aacLc;
         final isSupported = await _audioRecorder.isEncoderSupported(encoder);
         debugPrint('${encoder.name} supported: $isSupported');
+
+        final devs = await _audioRecorder.listInputDevices();
+        debugPrint('devices: ' + devs.toString());
 
         await _audioRecorder.start();
         setState(() {
@@ -155,6 +160,8 @@ class _MyHomePageState extends State<MyHomePage> {
           reverse_path += parts[i];
           if (i == parts.length - 2)
             reverse_path += '_reversed';
+          if (i < parts.length - 1)
+            reverse_path += '.';
         }
         FFmpegKit.execute('-i ' + path + ' -af areverse ' + reverse_path).then((session) async {
           final output = await session.getOutput();
