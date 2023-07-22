@@ -145,12 +145,17 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       _timer?.cancel();
       final path = await _audioRecorder.stop();
-      String? reverse_path = null;
+      String reverse_path = '';
       if (path == null) {
         debugPrint('path is null on stop');
       } else {
         debugPrint('recorded audio to: ' + path);
-        reverse_path = path + '_reverse';
+        List<String> parts = path.split('.');
+        for (int i = 0; i < parts.length; i++) {
+          reverse_path += parts[i];
+          if (i == parts.length - 2)
+            reverse_path += '_reversed';
+        }
         FFmpegKit.execute('-i ' + path + ' -af areverse ' + reverse_path).then((session) async {
           final output = await session.getOutput();
           debugPrint(output);
@@ -161,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() {
         _recording = false;
         _file_path = path;
-        _file_path_reverse = reverse_path;
+        _file_path_reverse = reverse_path == '' ? null : reverse_path;
       });
     }
   }
