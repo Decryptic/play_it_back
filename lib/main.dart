@@ -52,6 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _duration = 0;
   Timer? _timer;
   bool _playing = false;
+  int _direction = 0; // for cassette animation, 0 -> paused, 1 -> forward, -1 -> reverse
   late final StreamSubscription _stream;
 
   @override
@@ -60,12 +61,19 @@ class _MyHomePageState extends State<MyHomePage> {
     _file_path = null;
     _file_path_reverse = null;
     _playing = false;
+    _direction = 0;
     _stream = _audioPlayer.onPlayerStateChanged.listen((it) {
       switch (it) {
         case ap.PlayerState.completed:
+          setState(() {
+            _playing = false;
+            _direction = 0;
+          });
+          break;
         case ap.PlayerState.stopped:
           setState(() {
             _playing = false;
+            _direction = 0;
           });
           break;
         default:
@@ -82,6 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _audioRecorder.dispose();
     _recording = false;
     _playing = false;
+    _direction = 0;
     _file_path = null;
     _file_path_reverse = null;
     _stream.cancel();
@@ -91,14 +100,20 @@ class _MyHomePageState extends State<MyHomePage> {
   void _play({bool reversed = false}) {
     if (_file_path != null && !reversed) {
       debugPrint('playing forward: ' + _file_path!);
-      setState(() => _playing = true);
+      setState(() {
+        _playing = true;
+        _direction = 1;
+      });
       _audioPlayer.play(
         kIsWeb ? ap.UrlSource(_file_path!) : ap.DeviceFileSource(_file_path!)
       );
       _audioPlayer.setPlaybackRate(1.0);
     } else if (_file_path_reverse != null && reversed) {
       debugPrint('playing reverse: ' + _file_path_reverse!);
-      setState(() => _playing = true);
+      setState(() {
+        _playing = true;
+        _direction = -1;
+      });
       _audioPlayer.play(
         kIsWeb ? ap.UrlSource(_file_path_reverse!) : ap.DeviceFileSource(_file_path_reverse!)
       );
@@ -122,6 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
         setState(() {
           _duration = 0;
           _recording = true;
+          _direction = 1;
         });
         _startTimer();
       } else {
@@ -129,6 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
           _recording = false;
           _file_path = null;
           _file_path_reverse = null;
+          _direction = 0;
         });
       }
     } catch (e) {
@@ -137,6 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
           _recording = false;
           _file_path = null;
           _file_path_reverse = null;
+          _direction = 0;
       });
     }
   }
@@ -176,6 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
         _file_path_reverse = reverse_path == '' ? null : reverse_path;
       });
     }
+    setState(() => _direction = 0);
   }
 
   void _startTimer() {
@@ -197,10 +216,8 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             _buildTimer(),
-            const Image(
-              image: const AssetImage(
-                'assets/images/tape.png',
-              ),
+            Image(
+              image: _buildCassette(),
               width: 200, //todo: scaled size
             ),
             Row(
@@ -224,7 +241,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   tooltip: 'Play forward',
                   onPressed: _recording || _playing || (_file_path == null)
                     ? null
-                    : _play,
+                    : () => _play(),
                 ),
               ],
             ),
@@ -239,6 +256,14 @@ class _MyHomePageState extends State<MyHomePage> {
           : const Icon(Icons.fiber_manual_record, color: Colors.red),
       ),
     );
+  }
+
+  AssetImage _buildCassette() {
+    if (_direction == -1)
+      return AssetImage('assets/images/tape_animated_reverse.gif');
+    if (_direction == 1)
+      return AssetImage('assets/images/tape_animated_forward.gif');
+    return AssetImage('assets/images/tape.png');
   }
 
   Widget _buildTimer() {

@@ -10,11 +10,11 @@
 		</data>
 		<key>Resources/flutter_assets/AssetManifest.bin</key>
 		<data>
-		GshP1p+9BTZX597NaXW7VjaC6Y0=
+		VwWquM2AThJqNXJ/RBCGllG81h4=
 		</data>
 		<key>Resources/flutter_assets/AssetManifest.json</key>
 		<data>
-		abyRRy03BJo86OvvlwxvMf6G1TQ=
+		c8BjTE8TztSCHG3PYD0HR7uJOWo=
 		</data>
 		<key>Resources/flutter_assets/FontManifest.json</key>
 		<data>
@@ -26,7 +26,31 @@
 		</data>
 		<key>Resources/flutter_assets/assets/images/tape.png</key>
 		<data>
+		nFoDqfZiKtm4OaGaiKnZSPMI2Ww=
+		</data>
+		<key>Resources/flutter_assets/assets/images/tape_animated.png</key>
+		<data>
 		mt8xoaTeBKiA+2SMdpfS+TmSvwM=
+		</data>
+		<key>Resources/flutter_assets/assets/images/tape_animated_forward.gif</key>
+		<data>
+		QTW40fsm63UInAge5SGc1HX5L60=
+		</data>
+		<key>Resources/flutter_assets/assets/images/tape_animated_frames.xcf</key>
+		<data>
+		PHxV2+4mtz4UxwfJpHvKAwPNgvg=
+		</data>
+		<key>Resources/flutter_assets/assets/images/tape_animated_frames_reverse.xcf</key>
+		<data>
+		UGFFSvPbLnnVkmZBJv0ZqfxunkE=
+		</data>
+		<key>Resources/flutter_assets/assets/images/tape_animated_layers.xcf</key>
+		<data>
+		xeYjb6TE/JAPh4CaSlYbP8pI1+Q=
+		</data>
+		<key>Resources/flutter_assets/assets/images/tape_animated_reverse.gif</key>
+		<data>
+		mO9xWXbnWLID6WWDG0Wj6bCf1Bs=
 		</data>
 		<key>Resources/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
@@ -38,7 +62,7 @@
 		</data>
 		<key>Resources/flutter_assets/kernel_blob.bin</key>
 		<data>
-		GW8LAZOdGT8d+sHXsoSVeFczmnk=
+		h4k+p4sWpEjysjWD3jMkEHuVxsA=
 		</data>
 		<key>Resources/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -66,14 +90,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BBVGuSaH1OrEVLb59tRyZwNzIs7US+n+KJDV9LKnqGw=
+			A+X6DoPjNMPtrGVZjGw1IP8bzDyJDz79lgDzwaT3x/4=
 			</data>
 		</dict>
 		<key>Resources/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			II9mS4CV5hfzLFAQBp3a+S3ckdrwQCgGsyw6go1kGdU=
+			AXxUfcRpmg3j38qOFkt0ALTMkO8Qmtv140TVLKLr4uA=
 			</data>
 		</dict>
 		<key>Resources/flutter_assets/FontManifest.json</key>
@@ -94,7 +118,49 @@
 		<dict>
 			<key>hash2</key>
 			<data>
+			Bm+jBr7VPXj4SxMTOq7d7bamgAkdqrK7A/E3zGySGnk=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/images/tape_animated.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
 			lUYy6B+tDyUIyzKngXQDg9a8sMpnqg4MX3lQP1vFpXI=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/images/tape_animated_forward.gif</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			lFNxjCAl8WAYQgba+DnzAHCAThuEVkWJVuG4iBSH3cg=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/images/tape_animated_frames.xcf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			KddQr8jcByZu+JiPBJhZPzRP2Nc5KJ8OQHHLOL0tqKE=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/images/tape_animated_frames_reverse.xcf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			u4ygBXnunop0w9ENjkyulJ/gTooy3fcuh0mBbWgSxnY=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/images/tape_animated_layers.xcf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			OyEgknpSldHaloHuonvPpO20Cf6+pBIau/lGRf5GRlc=
+			</data>
+		</dict>
+		<key>Resources/flutter_assets/assets/images/tape_animated_reverse.gif</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			J8VJF2F8kS7xkDXHLEV76CP02bUzR3vAQ6HQXiWwgSU=
 			</data>
 		</dict>
 		<key>Resources/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
@@ -115,7 +181,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/GWWjJzgbfB6hz7DPvQ/4R5brg3doV0ZqsxNQhtmv8g=
+			U0S19HbyDWFwqCN5t3uZQwnFrA0GNunpSpykuxiYA1g=
 			</data>
 		</dict>
 		<key>Resources/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
