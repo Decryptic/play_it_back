@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:record/record.dart';
 
 // Gage Swenson @Decryptic
-// credit to: https://github.com/llfbandit/record/tree/master/record/example
 
 void main() => runApp(const MyApp());
 
