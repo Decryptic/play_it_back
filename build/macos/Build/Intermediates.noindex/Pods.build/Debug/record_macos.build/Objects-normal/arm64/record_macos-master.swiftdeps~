@@ -1,6 +1,0 @@
-version: "Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)"
-options: "1beb05c2b80c7e862882779304f70e16a072f5f2269eecccf8fa19e9d454c49d"
-build_start_time: [1690049297, 564255952]
-build_end_time: [1690049297, 587550163]
-inputs:
-  "/Users/kitten/.pub-cache/hosted/pub.dev/record_macos-0.2.2/macos/Classes/RecordMacosPlugin.swift": !private [1687158966, 50912380]
