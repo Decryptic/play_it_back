@@ -2,10 +2,10 @@
 
 An open source Flutter project for recording audio and playing it in reverse.
 
-<!-- TODO hyperreference app store URLs -->
+<!-- TODO hyperreference play store URL -->
 <p align="middle">
   <a href=""><img src="https://raw.githubusercontent.com/Decryptic/Decryptic/main/google_play_badge.png" width="300"></a>
-  <a href=""><img src="https://raw.githubusercontent.com/Decryptic/Decryptic/main/app_store_badge.png" width="300"></a>
+  <a href="https://apps.apple.com/app/play-it-back/id6455259987"><img src="https://raw.githubusercontent.com/Decryptic/Decryptic/main/app_store_badge.png" width="300"></a>
 </p>
 
 <p align="middle">
